@@ -40,6 +40,7 @@ function initSunlit() {
   document.addEventListener("keydown", (event) => {
     // Space toggles the sun overlay on/off (like the demo)
     if (event.code === "Space") {
+      if (event.repeat) return; // one toggle per physical press
       event.preventDefault();
       const isOn = document.body.classList.contains("sunlit-on");
       sunlitSetEnabled(!isOn);
