@@ -81,6 +81,7 @@ body.sunlit-on .terms-tags a {
 .terms-tags--scaled .term-tag {
   font-size: var(--tagSize, 14px);
   color: var(--tagColor, var(--primary));
+  font-weight: 700;
 }
 
 .terms-tags--scaled .term-tag sup {
