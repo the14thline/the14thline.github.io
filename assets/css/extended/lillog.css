@@ -13,4 +13,42 @@
   z-index: 50;
 }
 
-/* (Tags page uses default PaperMod terms list now) */
+/* Categories two-column layout (left nav, right posts) */
+.categories-layout {
+  display: flex;
+  gap: var(--gap);
+}
+
+.categories-nav {
+  min-width: 140px;
+  font-size: 0.95rem;
+}
+
+.categories-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.categories-nav li + li {
+  margin-top: 4px;
+}
+
+.categories-nav a {
+  text-decoration: none;
+  color: var(--primary);
+}
+
+.categories-nav a:hover {
+  text-decoration: underline;
+}
+
+.categories-content {
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .categories-layout {
+    flex-direction: column;
+  }
+}
