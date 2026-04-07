@@ -1,0 +1,44 @@
+<div id="sunlit-dappled-light" aria-hidden="true">
+  <div id="sunlit-progressive-blur">
+    <div></div><div></div><div></div><div></div>
+  </div>
+  <div id="sunlit-glow"></div>
+  <div id="sunlit-glow-bounce"></div>
+
+  <div class="sunlit-perspective">
+    <div id="sunlit-leaves"></div>
+    <div id="sunlit-blinds">
+      <div class="sunlit-shutters">
+        <div class="sunlit-shutter"></div>
+        <div class="sunlit-shutter"></div>
+        <div class="sunlit-shutter"></div>
+        <div class="sunlit-shutter"></div>
+        <div class="sunlit-shutter"></div>
+        <div class="sunlit-shutter"></div>
+        <div class="sunlit-shutter"></div>
+        <div class="sunlit-shutter"></div>
+      </div>
+      <div class="sunlit-vertical">
+        <div class="sunlit-bar"></div>
+        <div class="sunlit-bar"></div>
+        <div class="sunlit-bar"></div>
+        <div class="sunlit-bar"></div>
+        <div class="sunlit-bar"></div>
+        <div class="sunlit-bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <svg width="0" height="0" aria-hidden="true" focusable="false">
+    <filter id="sunlit-wind">
+      <feTurbulence type="turbulence" baseFrequency="0.005" numOctaves="2" seed="2" />
+      <feDisplacementMap in="SourceGraphic" scale="40" />
+    </filter>
+  </svg>
+</div>
+
+<button class="sunlit-toggle" id="sunlit-toggle" type="button" title="Press Space to toggle the sun">
+  Sun <kbd>Space</kbd>
+</button>
+
+<script defer src="{{ "js/sunlit.js" | relURL }}"></script>
