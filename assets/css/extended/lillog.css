@@ -77,6 +77,16 @@ body.sunlit-on .terms-tags a {
   border: 1px solid color-mix(in srgb, var(--border) 60%, transparent 40%);
 }
 
+/* Tags: size by frequency + deterministic "random" color */
+.terms-tags--scaled .term-tag {
+  font-size: var(--tagSize, 14px);
+  color: var(--tagColor, var(--primary));
+}
+
+.terms-tags--scaled .term-tag sup {
+  font-size: 0.7em;
+}
+
 /* Tags at top of post header */
 .post-tags--top {
   margin-top: 12px;
