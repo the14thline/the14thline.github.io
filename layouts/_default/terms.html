@@ -39,11 +39,6 @@
             <div class="archive-meta">
                 {{- partial "post_meta.html" $p -}}
             </div>
-            <div class="post-content">
-                {{- if not ($p.Param "disableAnchoredHeadings") }}
-                {{- partial "anchored_headings.html" $p.Content -}}
-                {{- else }}{{ $p.Content }}{{ end }}
-            </div>
             <a class="entry-link" aria-label="post link to {{ $p.Title | plainify }}" href="{{ $p.Permalink }}"></a>
         </div>
         {{- end }}
