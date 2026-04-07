@@ -34,6 +34,11 @@
       <div class="archive-meta">
         {{- partial "post_meta.html" $p -}}
       </div>
+      {{- if (ne ($p.Param "hideSummary") true) }}
+      <div class="entry-content">
+        <p>{{ $p.Summary | plainify | htmlUnescape }}{{ if $p.Truncated }}...{{ end }}</p>
+      </div>
+      {{- end }}
       <a class="entry-link" aria-label="post link to {{ $p.Title | plainify }}" href="{{ $p.Permalink }}"></a>
     </div>
     {{- end }}
