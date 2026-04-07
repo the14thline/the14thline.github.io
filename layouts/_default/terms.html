@@ -52,6 +52,41 @@
 </div>
 {{- end }}
 
+{{- else if eq .Type "tags" }}
+
+{{- if .Title }}
+<header class="page-header">
+    <h1>{{ .Title }}</h1>
+    {{- if .Description }}
+    <div class="post-description">
+        {{ .Description }}
+    </div>
+    {{- end }}
+</header>
+{{- end }}
+
+{{- $max := 1 }}
+{{- range .Data.Terms.Alphabetical }}
+{{- if gt .Count $max }}{{- $max = .Count }}{{- end }}
+{{- end }}
+
+<div class="tag-cloud" aria-label="Tags">
+    {{- $type := .Type }}
+    {{- range .Data.Terms.Alphabetical }}
+    {{- $name := .Name }}
+    {{- $count := .Count }}
+    {{- $den := (sub $max 1) }}
+    {{- if lt $den 1 }}{{- $den = 1 }}{{- end }}
+    {{- $w := div (mul (sub $count 1) 100) $den }}
+    {{- $size := add 14 (div (mul $w 18) 100) }}
+    {{- with site.GetPage (printf "/%s/%s" $type $name) }}
+    <a class="tag-cloud__tag" href="{{ .Permalink }}" style="--tagSize: {{ $size }}px">
+        {{ .Name }}
+    </a>
+    {{- end }}
+    {{- end }}
+</div>
+
 {{- else }}
 
 {{- if .Title }}
