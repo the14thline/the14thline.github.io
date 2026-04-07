@@ -5,7 +5,36 @@ theme: PaperMod
 
 enableRobotsTXT: true
 
+paginate: 20
+
 params:
   defaultTheme: auto
   ShowReadingTime: true
   ShowCodeCopyButtons: true
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+
+  homeInfoParams:
+    Title: "Hi, I'm Jing."
+    Content: "I write about tech (AI, software, systems), lifestyle (travel, reading), career (management, leadership), and thoughts."
+
+  mainSections:
+    - tech
+    - lifestyle
+    - career
+    - thoughts
+
+menu:
+  main:
+    - name: Tech
+      url: /tech/
+      weight: 10
+    - name: Lifestyle
+      url: /lifestyle/
+      weight: 20
+    - name: Career
+      url: /career/
+      weight: 30
+    - name: Thoughts
+      url: /thoughts/
+      weight: 40
