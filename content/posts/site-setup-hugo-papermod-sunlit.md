@@ -1,101 +1,115 @@
 ---
 date: '2026-04-06T23:59:00-07:00'
 draft: false
-title: 'Site Setup: Hugo + PaperMod + Sunlit (Local-first)'
+title: 'Hello, world (again): rebuilding my site with Cursor'
 categories: ['tech']
 tags: ['hugo', 'papermod', 'github-pages', 'css']
 ---
 
-I finally bootstrapped this site from scratch: **Hugo + PaperMod**, deployed on **GitHub Pages**, with a few opinionated tweaks to make it feel like a “notes-first” blog and a small dose of fun sunlight.
+I’ve rebuilt my personal website more times than I want to admit.
 
-This post is a short record of *what I did* so future-me can reproduce it (or undo it).
+In the past, “setting up a blog” meant a weekend of yak-shaving: picking a generator, wiring a theme, fighting CSS, and then doing the GitHub Pages dance by hand—branches, build artifacts, weird base URLs, and the inevitable “why are my links pointing to the wrong place”.
 
-## Goals
+This time I wanted a different experience:
 
-- **Local-first**: get everything working on my laptop before worrying about deployment.
-- **Fast + boring**: Hugo + PaperMod is a good “it just works” baseline.
-- **Good navigation**: categories and tags should be easy to scan.
-- **Optional delight**: a Sunlit overlay you can toggle with the keyboard.
+- ship a clean baseline fast,
+- keep the whole thing boring and maintainable,
+- and only then add a little delight.
 
-## Base stack
+The twist is that I built this site inside **Cursor**, and I didn’t sit down and type out code line-by-line. I described what I wanted, iterated visually, and let the editor help me stitch everything together.
 
-- **Hugo (Extended)** with config in `hugo.yaml`
-- **PaperMod** theme vendored under `themes/PaperMod/`
-- Content lives in `content/posts/` (with `categories` + `tags` in front matter)
+This post is a narrative walkthrough of what I ended up with and the techniques I used—mostly so future-me remembers how it all fits.
 
-## Content structure (categories + tags)
+## The boring base: Hugo + PaperMod
 
-I write in four high-level categories:
+I picked **Hugo** because it’s fast, simple, and the mental model is stable: content in Markdown, templates in a directory, output is static HTML.
+
+I picked **PaperMod** because it’s clean and predictable—an opinionated starting point that doesn’t fight you.
+
+The goal wasn’t to build a bespoke design system. The goal was: *make writing frictionless*.
+
+The structure is straightforward:
+
+- posts live in `content/posts/`
+- front matter controls metadata
+- the theme handles the rest
+
+## How I organize writing (categories + tags)
+
+I’m going to publish in four broad categories:
 
 - 👨‍💻 tech
 - 🌿 lifestyle
 - 💼 career
 - 💭 thoughts
 
-In practice, posts are stored under `content/posts/` and the categories live in front matter (via Hugo taxonomies):
+Even though everything sits under `content/posts/`, each post gets categories and tags in front matter so I can slice the archive differently later:
 
 ```yaml
 categories: ['tech']
 tags: ['ai', 'systems']
 ```
 
-That keeps URLs simple while still letting the site group content in multiple ways.
+This keeps URLs simple but still gives me a bunch of navigational affordances “for free” (categories pages, tags pages, RSS, etc.).
 
-## Categories page (custom)
+## Navigation: categories that read like an archive
 
-PaperMod’s default taxonomy “terms” page is a list of links. I wanted something closer to an “archive” view:
+PaperMod’s default taxonomy “terms” page is fine, but I wanted my **categories** page to feel more like the archive view: scannable and dense.
 
-- **Two columns** per category row
-  - left: category label + count
-  - right: post titles grouped under that category
-- A **Jump to** row at the top so you can skip a long category.
-- Clean list style: **title only** (no date/reading time) in this view.
+So I customized `/categories/` to be:
 
-This is implemented by overriding PaperMod’s terms template at:
+- **Two columns per category row**
+  - left: the category label + count
+  - right: the list of posts under that category
+- A small **Jump to** row at the top (important once one category becomes long).
+- Titles only (no date/reading time), because the intent is “find the thing”, not “browse chronologically”.
+
+Under the hood, this is just a template override + a bit of CSS:
 
 - `layouts/_default/terms.html`
-
-…and adding a bit of CSS in:
-
 - `assets/css/extended/lillog.css`
 
-## Tags page (kept simple)
+## Tags: intentionally boring (for now)
 
-I tried “word cloud” layouts for tags, but for now I’m sticking with the PaperMod default:
+I briefly explored word clouds for tags (because they look cool), but I’m keeping `/tags/` dead simple:
 
 - `/tags/` is just a list of tag links with counts.
 
-Simple is good; I can revisit the tag UI later.
+I can always revisit this once I have enough content for the tag surface area to matter.
 
-## Sunlit overlay (optional delight)
+## A little delight: Sunlit
 
-Inspired by the “sunlit / dappled light” trend, I integrated an optional overlay based on Jacky Zhao’s open-source CSS demo:
+After the baseline was stable, I gave myself permission to add one fun thing: an optional sunlight overlay inspired by the recent “sunny mode” wave.
+
+I adapted the effect from Jacky Zhao’s open-source demo:
 
 - Repo: `https://github.com/jackyzha0/sunlit`
 - Example: `https://sunlit.pages.dev/`
 
 On this site:
 
-- Press **Space** to toggle the sunlight theme ON/OFF (one press = one change).
-- The post cards become transparent when Sunlit is enabled so the effect shows through.
+- Press **Space** to toggle ☀️ (one press = one change).
+- When it’s on, the post cards become slightly transparent so the effect shows through.
 
-Implementation details:
+Implementation-wise, it’s surprisingly small:
 
 - CSS: `static/css/sunlit.css` (adapted from the demo)
-- JS: `static/js/sunlit.js` (Space toggle + persistence)
+- JS: `static/js/sunlit.js` (Space toggle + “one press per change”)
 - Leaves image: `static/sunlit/leaves.png`
 - Hooked into PaperMod via:
   - `layouts/partials/extend_head.html` (inject CSS)
   - `layouts/partials/extend_footer.html` (inject overlay DOM + toggle button + JS)
 
-## Local dev vs production URLs
+## The “why is localhost wrong?” trap (and how I avoided it)
 
-One footgun with Hugo: if `baseURL` points at production, local navigation links can jump to the wrong host/port.
+One classic footgun: `baseURL`.
 
-What I do now:
+If your config points at production while you’re developing locally, Hugo can generate absolute links that jump you to the wrong host/port. I hit this immediately.
 
-- `hugo.yaml` uses a **local** base URL: `http://localhost:1314/`
-- GitHub Actions overrides it during build:
+My fix is pragmatic:
+
+- Locally, `hugo.yaml` uses `http://localhost:1314/`
+- In CI, GitHub Actions builds with the real base URL:
 
 ```bash
 hugo --minify --baseURL "https://the14thline.github.io/"
@@ -103,7 +117,21 @@ hugo --minify --baseURL "https://the14thline.github.io/"
 
 So local browsing stays local, and production stays correct.
 
-## Next steps
+## What changed for me this time
+
+The most interesting part of this build wasn’t Hugo or PaperMod—it was the workflow.
+
+I used to set up GitHub Pages manually and treat “blog setup” as a mini project.
+This time I treated it like a conversation:
+
+- “Make the categories page look like an archive.”
+- “Remove author names from posts.”
+- “Add a sunlight overlay and let Space toggle it.”
+- “Stop links from jumping to the wrong port.”
+
+Cursor made that loop fast: describe → change → refresh → adjust.
+
+## Next
 
 - Replace placeholder social links with real ones.
 - Trim/replace sample posts with real writing.
