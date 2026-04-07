@@ -52,46 +52,6 @@
 </div>
 {{- end }}
 
-{{- else if eq .Type "tags" }}
-
-{{- if .Title }}
-<header class="page-header">
-    <h1>{{ .Title }}</h1>
-    {{- if .Description }}
-    <div class="post-description">
-        {{ .Description }}
-    </div>
-    {{- end }}
-</header>
-{{- end }}
-
-{{- $max := 1 }}
-{{- range .Data.Terms.Alphabetical }}
-{{- if gt .Count $max }}{{- $max = .Count }}{{- end }}
-{{- end }}
-
-<div class="tagboard" aria-label="Tags board">
-    {{- $type := .Type }}
-    {{- range .Data.Terms.Alphabetical }}
-    {{- $name := .Name }}
-    {{- $count := .Count }}
-    {{- $den := (sub $max 1) }}
-    {{- if lt $den 1 }}{{- $den = 1 }}{{- end }}
-    {{- $w := div (mul (sub $count 1) 100) $den }}
-    {{- $size := add 12 (div (mul $w 18) 100) }}
-    {{- with site.GetPage (printf "/%s/%s" $type $name) }}
-    <a class="tagcloud__tag" href="{{ .Permalink }}"
-       data-weight="{{ $count }}"
-       style="--tagSize: {{ $size }}px"
-       aria-label="tag {{ .Name }} ({{ $count }})">
-        <span class="tagcloud__word">{{ .Name }}</span>
-    </a>
-    {{- end }}
-    {{- end }}
-</div>
-
-<script defer src="{{ "js/tag-cloud.js" | relURL }}"></script>
-
 {{- else }}
 
 {{- if .Title }}
