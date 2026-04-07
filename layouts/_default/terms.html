@@ -80,13 +80,17 @@
     {{- $w := div (mul (sub $count 1) 100) $den }}
     {{- $size := add 12 (div (mul $w 18) 100) }}
     {{- with site.GetPage (printf "/%s/%s" $type $name) }}
-    <a class="tagboard__tag" href="{{ .Permalink }}" style="--tagSize: {{ $size }}px" aria-label="tag {{ .Name }} ({{ $count }})">
-        <span class="tagboard__word">{{ .Name }}</span>
-        <span class="tagboard__count">{{ $count }}</span>
+    <a class="tagcloud__tag" href="{{ .Permalink }}"
+       data-weight="{{ $count }}"
+       style="--tagSize: {{ $size }}px"
+       aria-label="tag {{ .Name }} ({{ $count }})">
+        <span class="tagcloud__word">{{ .Name }}</span>
     </a>
     {{- end }}
     {{- end }}
 </div>
+
+<script defer src="{{ "js/tag-cloud.js" | relURL }}"></script>
 
 {{- else }}
 
