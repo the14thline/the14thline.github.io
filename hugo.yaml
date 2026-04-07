@@ -1,0 +1,12 @@
+baseURL: http://localhost:1313/
+languageCode: en-us
+title: the14thline
+theme: PaperMod
+
+enableRobotsTXT: true
+
+params:
+  disableThemeToggle: true
+  defaultTheme: auto
+  ShowReadingTime: true
+  ShowCodeCopyButtons: true
