@@ -15,12 +15,16 @@
 
 /* Categories rows: label left, posts right (like archive) */
 .categories-row {
-  display: grid;
-  grid-template-columns: auto 1fr;
+  display: flex;
   align-items: flex-start;
-  column-gap: var(--gap);
 }
 
 .categories-row .archive-year-header {
-  margin-top: 0.25rem;
+  width: 200px; /* match .archive-month-header width */
+  margin: 25px 0; /* align visually with archive layout */
+  flex-shrink: 0;
+}
+
+.categories-row .archive-posts {
+  flex: 1;
 }
