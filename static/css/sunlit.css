@@ -208,7 +208,7 @@ body.sunlit-on > footer {
 /* Small toggle button */
 .sunlit-toggle {
   position: fixed;
-  right: 16px;
+  left: 16px;
   bottom: 16px;
   z-index: 60;
   display: inline-flex;
