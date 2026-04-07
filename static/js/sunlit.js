@@ -2,6 +2,9 @@ function sunlitToggle() {
   const body = document.body;
   body.classList.add("sunlit-animation-ready");
   body.classList.toggle("sunlit-dark");
+  try {
+    localStorage.setItem("sunlit-dark", body.classList.contains("sunlit-dark") ? "1" : "0");
+  } catch {}
 }
 
 function sunlitSetEnabled(enabled) {
@@ -24,33 +27,48 @@ function sunlitIsEnabled() {
   }
 }
 
+function sunlitIsDark() {
+  try {
+    return localStorage.getItem("sunlit-dark") === "1";
+  } catch {
+    return false;
+  }
+}
+
 function initSunlit() {
   const enabled = sunlitIsEnabled();
-  if (enabled) sunlitSetEnabled(true);
+  if (enabled) {
+    sunlitSetEnabled(true);
+    if (sunlitIsDark()) {
+      document.body.classList.add("sunlit-animation-ready", "sunlit-dark");
+    }
+  }
 
   const btn = document.getElementById("sunlit-toggle");
   if (btn) {
     btn.addEventListener("click", () => {
       const isOn = document.body.classList.contains("sunlit-on");
       sunlitSetEnabled(!isOn);
-      if (!isOn) sunlitToggle(); // start with a visible state
     });
   }
 
   document.addEventListener("keydown", (event) => {
-    // Space toggles the sun overlay on/off (like the demo)
+    // Don't hijack typing in inputs
+    const t = event.target;
+    if (t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.tagName === "SELECT" || t.isContentEditable)) {
+      return;
+    }
+
+    // Space toggles day/night (one toggle per physical press).
     if (event.code === "Space") {
       if (event.repeat) return; // one toggle per physical press
       event.preventDefault();
-      const isOn = document.body.classList.contains("sunlit-on");
-      sunlitSetEnabled(!isOn);
-      if (!isOn) sunlitToggle();
-      return;
-    }
-    // When overlay is enabled, allow "S" to toggle day/night feel (optional)
-    if (!document.body.classList.contains("sunlit-on")) return;
-    if (event.key.toLowerCase() === "s") {
+      // enable overlay if needed, then toggle day/night
+      if (!document.body.classList.contains("sunlit-on")) {
+        sunlitSetEnabled(true);
+      }
       sunlitToggle();
+      return;
     }
   });
 }
