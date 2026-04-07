@@ -12,6 +12,13 @@
 
 {{- $cats := site.Taxonomies.categories }}
 
+<nav class="categories-jump">
+  <span>Jump to:</span>
+  {{- range $name, $pages := $cats }}
+  <a href="#{{ $name | urlize }}">{{ $name }}</a>
+  {{- end }}
+</nav>
+
 {{- range $name, $pages := $cats }}
 <div class="archive-year categories-row" id="{{ $name | urlize }}">
   <h2 class="archive-year-header">
@@ -37,9 +44,6 @@
         </span>
         {{- end }}
       </h3>
-      <div class="archive-meta">
-        {{- partial "post_meta.html" $p -}}
-      </div>
       <a class="entry-link" aria-label="post link to {{ $p.Title | plainify }}" href="{{ $p.Permalink }}"></a>
     </div>
     {{- end }}

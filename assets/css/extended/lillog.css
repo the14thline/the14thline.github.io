@@ -28,3 +28,20 @@
 .categories-row .archive-posts {
   flex: 1;
 }
+
+.categories-jump {
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  color: var(--secondary);
+}
+
+.categories-jump a {
+  margin-left: 0.4rem;
+  margin-right: 0.1rem;
+  text-decoration: none;
+  color: var(--primary);
+}
+
+.categories-jump a:hover {
+  text-decoration: underline;
+}
