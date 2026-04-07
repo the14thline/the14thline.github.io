@@ -59,15 +59,18 @@ function initSunlit() {
       return;
     }
 
-    // Space toggles day/night (one toggle per physical press).
+    // Space toggles the Sunlit theme on/off (one toggle per physical press).
     if (event.code === "Space") {
       if (event.repeat) return; // one toggle per physical press
       event.preventDefault();
-      // enable overlay if needed, then toggle day/night
-      if (!document.body.classList.contains("sunlit-on")) {
-        sunlitSetEnabled(true);
+      const isOn = document.body.classList.contains("sunlit-on");
+      // turn on/off the overlay; when turning on, start in day mode
+      if (!isOn) {
+        try {
+          localStorage.setItem("sunlit-dark", "0");
+        } catch {}
       }
-      sunlitToggle();
+      sunlitSetEnabled(!isOn);
       return;
     }
   });
