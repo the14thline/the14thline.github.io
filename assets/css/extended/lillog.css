@@ -13,24 +13,4 @@
   z-index: 50;
 }
 
-/* Tag cloud-ish layout: center, wrap, size by frequency */
-.tag-cloud {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px 14px;
-  justify-content: center;
-  padding: 12px 4px 4px;
-}
-
-.tag-cloud__tag {
-  text-decoration: none;
-  color: var(--primary);
-  font-weight: 650;
-  font-size: var(--tagSize, 16px);
-  letter-spacing: -0.01em;
-  line-height: 1.1;
-}
-
-.tag-cloud__tag:hover {
-  text-decoration: underline;
-}
+/* (Tags page uses default PaperMod terms list now) */
