@@ -70,3 +70,9 @@ body.sunlit-on .share-buttons {
   background: transparent;
   border-color: color-mix(in srgb, var(--border) 60%, transparent 40%);
 }
+
+/* Tags at top of post header */
+.post-tags--top {
+  margin-top: 12px;
+  margin-bottom: 0;
+}
