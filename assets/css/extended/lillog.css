@@ -61,3 +61,12 @@ body.sunlit-on .first-entry {
 body.sunlit-on .toc {
   background: transparent;
 }
+
+/* Make post footer chips/prev-next transparent under Sunlit */
+body.sunlit-on .post-tags a,
+body.sunlit-on .paginav,
+body.sunlit-on .paginav a,
+body.sunlit-on .share-buttons {
+  background: transparent;
+  border-color: color-mix(in srgb, var(--border) 60%, transparent 40%);
+}
