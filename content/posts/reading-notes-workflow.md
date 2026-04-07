@@ -1,5 +1,5 @@
 ---
-date: '2026-04-06T23:17:52-07:00'
+date: '2024-03-13T06:36:20-07:00'
 draft: false
 title: 'Reading Notes Workflow'
 categories: ['lifestyle']

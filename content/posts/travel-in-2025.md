@@ -1,5 +1,5 @@
 ---
-date: '2026-04-06T23:12:54-07:00'
+date: '2024-08-15T17:45:23-07:00'
 draft: false
 title: 'Travel in 2025'
 categories: ['lifestyle']

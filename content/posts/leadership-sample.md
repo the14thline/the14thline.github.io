@@ -1,5 +1,5 @@
 ---
-date: '2026-04-06T22:55:10-07:00'
+date: '2025-06-12T22:18:33-07:00'
 draft: false
 title: 'Leadership Sample'
 categories: ['career']

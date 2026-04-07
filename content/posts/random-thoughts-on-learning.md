@@ -1,5 +1,5 @@
 ---
-date: '2026-04-06T23:12:54-07:00'
+date: '2026-01-07T20:09:57-07:00'
 draft: false
 title: 'Random Thoughts on Learning'
 categories: ['thoughts']

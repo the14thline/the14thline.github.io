@@ -1,5 +1,5 @@
 ---
-date: '2026-04-06T23:59:00-07:00'
+date: '2024-07-03T21:49:53-07:00'
 draft: false
 title: 'Hello, world (again): rebuilding my site with Cursor'
 categories: ['tech']

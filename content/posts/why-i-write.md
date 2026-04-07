@@ -1,5 +1,5 @@
 ---
-date: '2026-04-06T22:55:11-07:00'
+date: '2025-02-22T02:43:58-07:00'
 draft: false
 title: 'Why I Write'
 categories: ['thoughts']

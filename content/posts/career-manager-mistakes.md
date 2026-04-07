@@ -1,5 +1,5 @@
 ---
-date: '2026-04-06T23:12:54-07:00'
+date: '2025-09-01T03:22:46-07:00'
 draft: false
 title: 'Career Manager Mistakes'
 categories: ['career']

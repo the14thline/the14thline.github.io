@@ -1,5 +1,5 @@
 ---
-date: '2026-04-06T23:17:52-07:00'
+date: '2025-07-13T17:41:15-07:00'
 draft: false
 title: 'Travel Packing List'
 categories: ['lifestyle']

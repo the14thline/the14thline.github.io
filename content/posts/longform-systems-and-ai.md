@@ -1,5 +1,5 @@
 ---
-date: '2026-04-06T23:17:52-07:00'
+date: '2024-06-30T03:07:17-07:00'
 draft: false
 title: 'Longform: Systems, AI, and the Boring Parts (Very Long Sample)'
 categories: ['tech']

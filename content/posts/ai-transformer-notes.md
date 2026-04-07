@@ -1,5 +1,5 @@
 ---
-date: '2026-04-06T23:12:53-07:00'
+date: '2024-01-22T02:08:18-07:00'
 draft: false
 title: 'AI Transformer Notes'
 categories: ['tech']
