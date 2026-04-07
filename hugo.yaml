@@ -23,6 +23,7 @@ params:
   ShowCodeCopyButtons: true
   ShowPostNavLinks: true
   ShowBreadCrumbs: true
+  disableScrollToTop: false
   author: Jing
 
   # PaperMod's home list pulls from these content sections.

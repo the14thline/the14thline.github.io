@@ -1,8 +1,14 @@
-/* Match Lil'Log: hide theme toggle and scroll-to-top link */
+/* Lil'Log-inspired tweaks */
 
-#theme-toggle,
-.top-link,
-#top-link {
-  display: none !important;
+/* Reduce vertical gap between intro block and first post card */
+.home-info.first-entry {
+  min-height: 0;
+  margin: var(--gap) 0 var(--gap) 0;
+  padding-top: calc(var(--gap) * 0.5);
+  padding-bottom: calc(var(--gap) * 0.25);
 }
 
+/* Make the back-to-top button reliably visible when PaperMod enables it */
+.top-link {
+  z-index: 50;
+}
