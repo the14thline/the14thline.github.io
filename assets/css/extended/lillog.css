@@ -77,6 +77,31 @@ body.sunlit-on .terms-tags a {
   border: 1px solid color-mix(in srgb, var(--border) 60%, transparent 40%);
 }
 
+/* Categories entry line with dotted leader + date (like archive list screenshot) */
+.cat-entry-line {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.cat-entry-title {
+  flex: 0 1 auto;
+  min-width: 0;
+}
+
+.cat-entry-date {
+  flex: 0 0 auto;
+  color: var(--secondary);
+  font-size: 0.95em;
+  white-space: nowrap;
+}
+
+.cat-entry-dots {
+  flex: 1 1 auto;
+  border-bottom: 1px dotted color-mix(in srgb, var(--border) 70%, transparent 30%);
+  transform: translateY(-0.2em);
+}
+
 /* Tags at top of post header */
 .post-tags--top {
   margin-top: 12px;
