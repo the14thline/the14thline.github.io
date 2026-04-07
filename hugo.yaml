@@ -1,4 +1,4 @@
-baseURL: http://localhost:1313/
+baseURL: https://the14thline.github.io/
 languageCode: en-us
 title: the14thline
 theme: PaperMod
