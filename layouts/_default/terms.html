@@ -11,6 +11,7 @@
 </header>
 
 {{- $cats := site.Taxonomies.categories }}
+{{- $emoji := dict "tech" "💻" "lifestyle" "🌿" "career" "📈" "thoughts" "💭" }}
 
 <nav class="categories-jump">
   <span>Jump to:</span>
@@ -23,7 +24,7 @@
 <div class="archive-year categories-row" id="{{ $name | urlize }}">
   <h2 class="archive-year-header">
     <a class="archive-header-link" href="#{{ $name | urlize }}">
-      {{- $name -}}
+      {{- with index $emoji (lower $name) -}}{{ . }} {{ end -}}{{ $name -}}
     </a>
     <sup class="archive-count">&nbsp;{{ len $pages }}</sup>
   </h2>
