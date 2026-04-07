@@ -45,3 +45,19 @@
 .categories-jump a:hover {
   text-decoration: underline;
 }
+
+/* Transparent post sections (cards) so Sunlit shows through */
+body.sunlit-on .post-entry {
+  background: transparent;
+}
+
+body.sunlit-on .post-entry,
+body.sunlit-on .first-entry {
+  border-color: color-mix(in srgb, var(--border) 60%, transparent 40%);
+  box-shadow: none;
+}
+
+/* On single-post pages, the ToC uses --entry as background in dark theme. */
+body.sunlit-on .toc {
+  background: transparent;
+}
