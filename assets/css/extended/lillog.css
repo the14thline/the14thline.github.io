@@ -71,6 +71,12 @@ body.sunlit-on .share-buttons {
   border-color: color-mix(in srgb, var(--border) 60%, transparent 40%);
 }
 
+/* Tags page chips */
+body.sunlit-on .terms-tags a {
+  background: transparent;
+  border: 1px solid color-mix(in srgb, var(--border) 60%, transparent 40%);
+}
+
 /* Tags at top of post header */
 .post-tags--top {
   margin-top: 12px;
