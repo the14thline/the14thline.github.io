@@ -6,7 +6,6 @@ theme: PaperMod
 enableRobotsTXT: true
 
 params:
-  disableThemeToggle: true
   defaultTheme: auto
   ShowReadingTime: true
   ShowCodeCopyButtons: true
