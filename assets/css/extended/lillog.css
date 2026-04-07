@@ -1,0 +1,8 @@
+/* Match Lil'Log: hide theme toggle and scroll-to-top link */
+
+#theme-toggle,
+.top-link,
+#top-link {
+  display: none !important;
+}
+

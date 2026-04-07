@@ -7,34 +7,48 @@ enableRobotsTXT: true
 
 paginate: 20
 
+taxonomies:
+  category: categories
+  tag: tags
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
+
 params:
   defaultTheme: auto
   ShowReadingTime: true
   ShowCodeCopyButtons: true
   ShowPostNavLinks: true
   ShowBreadCrumbs: true
+  author: Jing
+
+  disableThemeToggle: true
+
+  # PaperMod's home list pulls from these content sections.
+  mainSections:
+    - posts
 
   homeInfoParams:
     Title: "Hi, I'm Jing."
     Content: "I write about tech (AI, software, systems), lifestyle (travel, reading), career (management, leadership), and thoughts."
 
-  mainSections:
-    - tech
-    - lifestyle
-    - career
-    - thoughts
-
 menu:
   main:
-    - name: Tech
-      url: /tech/
+    - name: Posts
+      url: /posts/
       weight: 10
-    - name: Lifestyle
-      url: /lifestyle/
+    - name: Archive
+      url: /archives/
       weight: 20
-    - name: Career
-      url: /career/
+    - name: Search
+      url: /search/
       weight: 30
-    - name: Thoughts
-      url: /thoughts/
+    - name: Tags
+      url: /tags/
       weight: 40
+    - name: Categories
+      url: /categories/
+      weight: 50
