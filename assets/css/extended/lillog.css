@@ -8,6 +8,11 @@
   padding-bottom: calc(var(--gap) * 0.25);
 }
 
+/* Home intro: allow “extra blank line” feel via paragraph spacing */
+.home-info .entry-content p + p {
+  margin-top: 1.75em;
+}
+
 /* Make the back-to-top button reliably visible when PaperMod enables it */
 .top-link {
   z-index: 50;
