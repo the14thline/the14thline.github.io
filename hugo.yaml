@@ -31,7 +31,7 @@ params:
     - posts
 
   homeInfoParams:
-    Title: "Hi, I'm Jing."
+    Title: ""
     Content: |
       A sonnet consists of fourteen lines. The first thirteen are the build-up — a steady rhythm of logic, the heavy architecture of a premise, the "prose" of a life. In our modern existence — especially in this city of code and rain — the first thirteen lines are our default. **But a sonnet is not a poem until it reaches the 14th line.**
 
