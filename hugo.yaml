@@ -32,7 +32,10 @@ params:
 
   homeInfoParams:
     Title: "Hi, I'm Jing."
-    Content: "I write about tech (AI, software, systems), lifestyle (travel, reading), career (management, leadership), and thoughts."
+    Content: |
+      A sonnet consists of fourteen lines. The first thirteen are the build-up — a steady rhythm of logic, the heavy architecture of a premise, the "prose" of a life. In our modern existence — especially in this city of code and rain — the first thirteen lines are our default. **But a sonnet is not a poem until it reaches the 14th line.**
+
+      In literature, this is called the **Volta** — the "Turn." It is the moment the argument shifts, the perspective breaks, and the soul finally speaks. Without the 14th line, the previous thirteen are merely a list; with it, they become a symphony.
 
   socialIcons:
     - name: twitter
