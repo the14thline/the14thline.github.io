@@ -16,7 +16,7 @@
 <nav class="categories-jump">
   <span>Jump to:</span>
   {{- range $name, $pages := $cats }}
-  <a href="#{{ $name | urlize }}">{{ $name }}</a>
+  <a href="#{{ $name | urlize }}">{{ $name | title }}</a>
   {{- end }}
 </nav>
 
@@ -24,7 +24,7 @@
 <div class="archive-year categories-row" id="{{ $name | urlize }}">
   <h2 class="archive-year-header">
     <a class="archive-header-link" href="#{{ $name | urlize }}">
-      {{- with index $emoji (lower $name) -}}{{ . }} {{ end -}}{{ $name -}}
+      {{- with index $emoji (lower $name) -}}{{ . }} {{ end -}}{{ $name | title -}}
     </a>
     <sup class="archive-count">&nbsp;{{ len $pages }}</sup>
   </h2>
